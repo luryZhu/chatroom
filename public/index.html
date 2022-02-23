@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./chatroom.css" rel="stylesheet" type="text/css" />
+    <title>Chatroom</title>
+
+<body>
+    <!-- 登录表单 -->
+    <div class="bg-wrap">
+        <div class="form">
+            <h3 class="form-title">Login</h3>
+            <div class="form-item">
+                <div class="form-label">username: </div>
+                <input class="form-input" id="username" type="text" placeholder="please input username"></p>
+            </div>
+            <div class="form-item">
+                <div class="form-label">password: </div>
+                <input class="form-input" id="password" type="password" minlength="6" maxlength="20">
+            </div>
+            <div class="form-item">
+                
+                <button class="form-btn" id="login">login</button>
+            </div>
+        </div>
+    
+
+    <!-- 聊天室界面 -->
+        <div class="chatroom">
+            <!-- 左侧导航 -->
+            <div class="left">
+                <h3 class="left-title">USR1</h3>
+                <!-- 好友列表 -->
+                <ul class="left-list">
+                </ul>
+            </div>
+            <!-- 右侧 -->
+            <div class="right">
+                
+                <div class="right-title">Chatroom</div>
+                <!-- 聊天框 -->
+                <div class="msg-wrap">
+                    <!-- <div class="msg">
+                        <img class="avatar" src="./1.png">
+                        <div class="msg-txt">hello!</div>
+                    </div>
+                    <div class="msg msg-me">
+                        <img class="avatar" src="./1.png">
+                        <div class="msg-txt">who the heck?</div>
+                    </div> -->
+                </div>
+                <!-- 输入框 -->
+                <div class="input-wrap">
+                    <input class="input-box">
+                    <button class="input-button" onclick="doSend()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="chatroom.js"></script>
+    <script src="https://gw.alipayobjects.com/os/lib/socket.io-client/4.3.2/dist/socket.io.js"></script>
+</body>
+</html>
