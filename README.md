@@ -41,3 +41,57 @@ npm start
 ```
 
 ## 知识点
+
+koa + socket.io
+
+### 安装依赖
+
+在项目根目录安装websocket包，websocket依赖koa
+
+#### 服务器端
+
+Koa：使用淘宝镜像，或者直接`cnpm`
+
+```sh
+npm --registry https://registry.npm.taobao.org install --save koa
+npm --registry https://registry.npm.taobao.org install --save koa-static
+```
+
+Socket.io
+
+``` sh
+npm --registry https://registry.npm.taobao.org install --save socket.io
+```
+
+#### 客户端
+
+ html中引用    
+
+ ``` html
+ <script src="https://gw.alipayobjects.com/os/lib/socket.io-client/4.3.2/dist/socket.io.js"></script>
+ ```
+
+### 声明引用
+
+在服务器端
+
+``` js
+const path=require('path')
+const http=require('http') // socket的握手就是http
+const Koa=require('koa')
+const serve=require('koa-static')
+const socketIO=require('socket.io')
+```
+
+### 消息广播和接收
+
+| 服务器端                                            | 客户端                                           |
+| --------------------------------------------------- | ------------------------------------------------ |
+| server广播消息，一对多                              |                                                  |
+| `io.sockets.emit('online',[...users.keys()])  `     | `socket.on('online',(users)=>{})  `              |
+| server接收消息，并广播给其他client，一对多          | 发送消息的client收不到！                         |
+| `socket.broadcast.emit('receiveMessage',message)  ` | `socket.on('receiveMessage',(message)=>{})  `    |
+| server向一个客户算发送消息，一对一                  |                                                  |
+| `socket.emit('receiveHistory',[...history])  `      | `socket.on('receiveHistory',(history)=>{})     ` |
+|                                                     | client向服务器端发送消息，一对一                 |
+| `  socket.on('sendMessage',(content)=>{})  `        | `socket.emit('sendMessage',content)     `        |
